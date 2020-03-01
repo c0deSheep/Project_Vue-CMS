@@ -11,10 +11,13 @@ export function request (config) {
 
   //请求拦截器
   instance.interceptors.request.use(config => {
-
+    // 为请求头对象，添加Token验证的Authorization字段
+    // 相当于一个请求过程预处理
+    // 最后必须返回这个设置
+    config.headers.Authorization = window.sessionStorage.getItem('token')
     return config
   }, err => {
-    // console.log(err)
+    console.log(err)
   });
 
   //响应拦截器

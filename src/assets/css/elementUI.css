@@ -1,3 +1,29 @@
 .el-input .el-input__prefix {
   left: 10px !important;
 }
+
+.el-breadcrumb {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.el-card {
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,.1) !important;
+}
+
+.el-table {
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+th {
+  text-align: center !important;
+}
+
+td .cell {
+  text-align: center !important;
+}
+
+.el-pagination {
+  margin-top: 15px;
+}

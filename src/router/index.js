@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from '../components/login/Login.vue'
-
+import Login from '../views/login/Login.vue'
 import Home from '../views/home/Home.vue'
+
+import Welcome from '../components/welcome/Welcome.vue'
+import Users from '../components/user/User'
 
 Vue.use(VueRouter)
 
@@ -18,8 +20,21 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home
-  }
+    component: Home,
+    redirect:'/welcome',
+    //需要掩盖其他组件，就需要使用子路由
+    children:[
+      {
+        path: '/welcome',
+        component: Welcome
+      },
+      {
+        path: '/users',
+        component:Users
+      }
+    ]
+  },
+
 ]
 
 const router = new VueRouter({

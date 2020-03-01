@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <span>CMS ver0.1 Beta</span>
     <div class="login_box">
       <!--头像区域-->
       <div class="avatar_box">
@@ -31,7 +32,7 @@
 
 <script>
   // 引入封装好的post请求
-  import {post} from '../../network/login.js'
+  import {post} from '../../network/post.js'
 
   export default {
     name: "Login",
@@ -63,12 +64,48 @@
       }
     },
     methods : {
+      /**
+       *网络请求
+       */
       // 将post方法封装到methods中，这样通过直接调用即可获得data
       post () {
-        post("login",this.loginForm).then(data => {
-          console.log(data)
+        return post("login",this.loginForm)
+      },
+      // 登录事件，发送表单数据之前，要先对数据进行校验,使用validate这个校验方法，接收一个callback，callback传递的是一个boolean值，
+      // 只有正确校验才能返回true
+      login () {
+        this.$refs.loginFormRef.validate(valid=>{
+          if (!valid) return;
+          // 使用封装好的post请求，获取响应数据
+          //  post("login",this.loginForm)
+          this.post().then(res => {
+            // 失败弹框
+            if (res.meta.status !== 200) {return this.$message({message:'账号密码错误',type:'error',center:true,
+              duration:700,
+              offset:300})}
+            // 只有status为200时成功登录，此时弹框
+            this.$message({
+              message: '登录成功！',
+              type: 'success',
+              center:'true',
+              duration:700,
+              offset:300
+            });
+            //  完善登录后的操作：
+            //  1.将登陆成功之后的 token （唯一身份令牌） 保存的客户端的sessionStorage中（只在页面会话期间可用），localStorage则会一直可用，除非清楚数据
+            // 1.1 项目中除了登录之外的其他API接口，必须在登录之后才能访问
+            // 1.2 token 只因在当前网站打开期间生效，所以将token 保存在sessionStorage中、
+            window.sessionStorage.setItem('token', res.data.token)
+            //  2.通过编程式导航跳转到后台主页，路由地址式/home
+            this.$router.push('home')
+          })
         })
       },
+
+      /**
+       *其他事件
+       */
+      // 密码可视
       seePassword () {
         // if (this.eye === 'icon-visible') {
         //   this.eye = 'icon-eye_protection'
@@ -94,38 +131,8 @@
         })
       },
 
-      // 登录事件，发送表单数据之前，要先对数据进行校验,使用validate这个校验方法，接收一个callback，callback传递的是一个boolean值，
-      // 只有正确校验才能返回true
-      login () {
-        this.$refs.loginFormRef.validate(valid=>{
-          if (!valid) return;
-         // 使用封装好的post请求，获取响应数据
-          post("login",this.loginForm).then(res => {
-            // 失败弹框
-            if (res.meta.status !== 200) {return this.$message({message:'账号密码错误',type:'error',center:true,
-              duration:700,
-              offset:300})}
-            // 只有status为200时成功登录，此时弹框
-            this.$message({
-              message: '登录成功！',
-              type: 'success',
-              center:'true',
-              duration:700,
-              offset:300
-            });
-          //  完善登录后的操作：
-            //  1.将登陆成功之后的 token （唯一身份令牌） 保存的客户端的sessionStorage中（只在页面会话期间可用），localStorage则会一直可用，除非清楚数据
-              // 1.1 项目中除了登录之外的其他API接口，必须在登录之后才能访问
-              // 1.2 token 只因在当前网站打开期间生效，所以将token 保存在sessionStorage中、
-            window.sessionStorage.setItem('token', res.data.token)
-            //  2.通过编程式导航跳转到后台主页，路由地址式/home
-            this.$router.push('home')
-
-
-          })
-        })
-      }
     },
+    // vue重导向
     directives: {
       focus: {
         // 当绑定元素插入到 DOM 中。
@@ -135,28 +142,43 @@
         }
       }
     },
-    mounted () {
-
-    }
 
   }
 </script>
 
 <style lang="less" scoped>
   .login {
-    background-color: #2b4b6b;
+    background-color: #f2c502;
     height: 100%;
   }
-  
+
+  .login span {
+    display: inline-block;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 36px;
+    /*font-weight: 700;*/
+      -webkit-text-fill-color: #fff;/*文字的填充色*/
+      /*-webkit-text-stroke: 1.5px #0c807c;*/
+    background: #EEE url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAHklEQVQImWNkYGBgYGD4//8/A5wF5SBYyAr+//8PAPOCFO0Q2zq7AAAAAElFTkSuQmCC) repeat;
+    text-shadow: 5px -5px #0c807c, 8px -4px #03A9F4;
+    font-weight: bold;
+    -webkit-background-clip: text
+  }
+
+  /*登录框start*/
   .login_box {
     width: 450px;
     height: 300px;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
+    box-shadow: 4px 3px 3px 1px #0c807c;
   }
 
   .login_box .avatar_box {
@@ -195,5 +217,6 @@
     transform: translateY(20px);
   }
 
+  /*登录框end*/
 
 </style>
