@@ -1,3 +1,4 @@
+<!--修改用户信息弹框-->
 <template>
   <el-dialog
     title="修改用户"
@@ -64,7 +65,6 @@
     methods:{
       // 向父组件发射关闭消息框方法
       hideDialog () {
-        console.log('works')
         this.$emit('hideDialog')
       },
 

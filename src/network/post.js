@@ -12,6 +12,5 @@ export function post(url, data = {}) {
     data:data
   };
   sendObject.data=JSON.stringify(data);
-  console.log('works')
   return request(sendObject)
 }

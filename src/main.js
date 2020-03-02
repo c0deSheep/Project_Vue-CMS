@@ -13,6 +13,7 @@ import './assets/css/elementUI.css'
 
 Vue.config.productionTip = false
 
+Vue.prototype.$EventBus = new Vue()
 
 
 new Vue({

@@ -1,7 +1,10 @@
 <template>
   <div class="user">
     <!--面包屑导航区域-->
-    <breadcrumb></breadcrumb>
+    <breadcrumb>
+      <span slot="subName">用户管理</span>
+      <span slot="itemName">用户列表</span>
+    </breadcrumb>
     <!--卡片视图区域-->
     <card :userList="userList"
           :queryInfo="queryInfo"
@@ -15,7 +18,7 @@
 <script>
   import {get} from '../../network/get.js'
 
-  import Breadcrumb from './child/Breadcrumb'
+  import Breadcrumb from '../breadcrumb/Breadcrumb'
   import Card from './child/Card'
 
   export default {

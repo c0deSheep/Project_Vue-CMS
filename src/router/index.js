@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Login from '../views/login/Login.vue'
-import Home from '../views/home/Home.vue'
+// vue-cli脚手架中可以import导入时不添加文件后缀名
+import Login from '../views/login/Login'
+import Home from '../views/home/Home'
 
-import Welcome from '../components/welcome/Welcome.vue'
+import Welcome from '../components/welcome/Welcome'
 import Users from '../components/user/User'
+import Rights from '../components/power/Rights'
+import Roles from '../components/power/Roles'
 
 Vue.use(VueRouter)
 
@@ -31,6 +34,14 @@ const routes = [
       {
         path: '/users',
         component:Users
+      },
+      {
+        path:'/rights',
+        component:Rights
+      },
+      {
+        path:'/roles',
+        component:Roles
       }
     ]
   },

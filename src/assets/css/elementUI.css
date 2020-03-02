@@ -27,3 +27,11 @@ td .cell {
 .el-pagination {
   margin-top: 15px;
 }
+
+.title {
+  display: inline-block;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 20px !important;
+}

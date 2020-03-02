@@ -7,6 +7,5 @@ export function remove(url) {
     url: url,
     method: 'delete',
   };
-  console.log('works')
   return request(sendObject)
 }

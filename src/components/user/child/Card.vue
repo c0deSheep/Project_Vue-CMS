@@ -44,7 +44,7 @@
           </el-tooltip>
           <!--分配角色-->
           <el-tooltip class="item" effect="dark" content="分配角色" placement="top" :enterable="false">
-            <el-button type="warning" icon="el-icon-setting" size="mini" title="分配角色"></el-button>
+            <el-button type="warning" icon="el-icon-setting" size="mini" title="分配角色" @click="showSetRoleDialog(slotProps.row)"></el-button>
           </el-tooltip>
         </template>
       </el-table-column>
@@ -62,10 +62,15 @@
       <!--layout就是这个分页区域的展示排布-->
     </el-pagination>
 
+    <!--添加用户弹框-->
     <Dialog :dialogVisible="dialogVisible" @hideDialog="hideDialog" @getUserList="getUserList">
     </Dialog>
 
+    <!--编辑用户弹框-->
     <edit-dialog :editDialogVisible="editDialogVisible" :editForm="editForm" @hideDialog="hideDialog" @getUserList="getUserList"></edit-dialog>
+
+    <!--分配角色弹框-->
+    <set-role-dialog :setRoleDialogVisible="setRoleDialogVisible" :rolesList="rolesList" :setRoleForm="setRoleForm" @hideDialog="hideDialog" @getUserList="getUserList" @clearSetRoleForm="clearSetRoleForm"></set-role-dialog>
   </el-card>
 </template>
 
@@ -75,13 +80,15 @@
   import {remove} from '../../../network/remove.js'
 
   import Dialog from './Dialog'
-  import editDialog from './editDialog'
+  import EditDialog from './EditDialog'
+  import SetRoleDialog from './SetRoleDialog'
 
   export default {
     name: "Card",
     components:{
       Dialog,
-      editDialog
+      EditDialog,
+      SetRoleDialog
     },
     props:{
       userList:{
@@ -108,7 +115,13 @@
         // 编辑按钮后，消息框的显示控制布尔值
         editDialogVisible : false,
         // 查询到的用户信息对象
-        editForm : {}
+        editForm : {},
+        // 分配角色按钮后，消息框的显示控制布尔值
+        setRoleDialogVisible : false,
+        // 需要被分配角色的用户信息对象
+        setRoleForm : {},
+        // 所有角色的信息
+        rolesList :[],
       }
     },
     methods : {
@@ -127,7 +140,7 @@
       /**
        *网络请求
        */
-      // 1.封装方法
+      // 1.封装put修改方法
       put (userinfo) {
         // 安装API发送修改请求
         put (`users/${userinfo.id}/state/${userinfo.mg_state}`).then(res => {
@@ -206,18 +219,58 @@
         });
       },
 
+      // 4.1 点击分配角色方法弹框
+      showSetRoleDialog (role) {
+        // 4.1.1 将当前用户信息对象传递到弹框中
+        this.setRoleForm = role
+        // 4.1.2 在显示弹框之前，获取所有角色列表
+        this.getRolesList()
+        // 4.1.3显示弹框
+        this.setRoleDialogVisible = true
+      },
+
+      // 4.2 封装get获取所有角色方法
+      getRolesList () {
+        get('roles').then(res => {
+          // 1.1失败弹框
+          if (res.meta.status !== 200) {
+            this.$message.error('获取角色列表失败！')
+          }
+          // 1.2 成功
+          // 将角色列表保存到变量中，并传递到分配角色弹框中
+          this.rolesList = res.data
+        })
+      },
+
+      // 4.3 当关闭分配角色弹框时，接收返回的清空变量保存的当前的用户信息
+      clearSetRoleForm () {
+        // 清空数组保存的当前用户信息
+        this.setRoleForm = []
+      },
+
       /**
        *其他事件
        */
 
       hideDialog () {
-        this.dialogVisible = false
-        this.editDialogVisible = false
+        if (this.dialogVisible){
+          this.dialogVisible = false
+        }
+
+        if (this.editDialogVisible) {
+          this.editDialogVisible = false
+        }
+
+        if (this.setRoleDialogVisible) {
+          this.setRoleDialogVisible = false
+        }
       },
     }
   }
 </script>
 
 <style scoped>
-
+ .el-button--mini{
+   padding: 7px 12px ;
+ }
 </style>

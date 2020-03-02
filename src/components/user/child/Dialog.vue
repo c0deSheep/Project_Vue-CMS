@@ -1,15 +1,16 @@
+<!--弹出添加用户对话框-->
 <template>
   <el-dialog
-    title="提示"
+    title="添加用户"
     :visible.sync="dialogVisible"
     :close-on-click-modal="false"
     :before-close="hideDialog"
     width="30%"
     @close="addDialogClosed"><!--visible.sync控制消息框显示与否 el-dialog模态框点击空白不消失  设置属性:close-on-click-modal=“false”-->
     <!--作为子组件，接收父传来的dialogVisible，需要更改时通过发射函数包括这个before-close属性-->
-    <span>添加用户</span>
     <!--内容主题区域-->
     <!--表单-->
+    <!--el-form绑定的model是自定义绑定，而item绑定的是双向绑定v-model-->
     <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="70px">
       <el-form-item label="用户名" prop="username"><!--prop传递的是el-form中rules的属性值-->
         <el-input v-model="addForm.username"></el-input>

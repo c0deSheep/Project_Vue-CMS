@@ -23,7 +23,11 @@ import { Button,
                                               Tooltip,
                                                 Pagination,
                                                   Dialog,
-                                                    MessageBox} from 'element-ui'
+                                                    MessageBox,
+                                                      Tag,
+                                                        Tree,
+                                                          Select,
+                                                            Option} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import lang from 'element-ui/lib/locale/lang/zh-CN.js'
 import locale from 'element-ui/lib/locale'
@@ -52,6 +56,10 @@ Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Pagination)
 Vue.use(Dialog)
+Vue.use(Tag)
+Vue.use(Tree)
+Vue.use(Select)
+Vue.use(Option)
 // 不同的是，这个自定义弹框需要全局设置,$message是自定义属性
 Vue.prototype.$message = Message
 // 同样MessageBox也不需要全局使用，而是全局挂载
