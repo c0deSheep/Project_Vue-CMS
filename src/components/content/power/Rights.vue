@@ -14,8 +14,8 @@
 </template>
 
 <script>
-  import Breadcrumb from '../breadcrumb/Breadcrumb'
-  import RightsCard from './child/RightsCard'
+  import Breadcrumb from '../../common/breadcrumb/Breadcrumb'
+  import RightsCard from './child/rights/RightsCard'
 
   export default {
     name: "Rights",

@@ -19,11 +19,11 @@
 </template>
 
 <script>
-  import { get } from '../../network/get'
+  import { get } from '../../../network/get'
 
-  import Breadcrumb from '../breadcrumb/Breadcrumb'
+  import Breadcrumb from '../../common/breadcrumb/Breadcrumb'
 
-  import RolesCard from './child/RolesCard'
+  import RolesCard from './child/roles/RolesCard'
 
   export default {
     name: "Roles",

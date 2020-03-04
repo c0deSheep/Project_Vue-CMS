@@ -11,6 +11,12 @@ import './assets/css/base.css'
 
 import './assets/css/elementUI.css'
 
+// 导入第三方组件TreeTable 用于商品分类展示属性表格
+import TreeTable from 'vue-table-with-tree-grid'
+// 全局注册该组件
+Vue.component('tree-table',TreeTable)
+
+
 Vue.config.productionTip = false
 
 Vue.prototype.$EventBus = new Vue()

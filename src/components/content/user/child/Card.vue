@@ -1,3 +1,4 @@
+<!--用户管理路由的卡片视图组件-->
 <template>
   <!--卡片视图-->
   <el-card class="box-card">
@@ -75,9 +76,9 @@
 </template>
 
 <script>
-  import {put} from '../../../network/put.js'
-  import {get} from '../../../network/get.js'
-  import {remove} from '../../../network/remove.js'
+  import {put} from '../../../../network/put.js'
+  import {get} from '../../../../network/get.js'
+  import {remove} from '../../../../network/remove.js'
 
   import Dialog from './Dialog'
   import EditDialog from './EditDialog'
@@ -245,13 +246,13 @@
       // 4.3 当关闭分配角色弹框时，接收返回的清空变量保存的当前的用户信息
       clearSetRoleForm () {
         // 清空数组保存的当前用户信息
-        this.setRoleForm = []
+        this.setRoleForm = {}
       },
 
       /**
        *其他事件
        */
-
+      // 隐藏
       hideDialog () {
         if (this.dialogVisible){
           this.dialogVisible = false
@@ -270,6 +271,10 @@
 </script>
 
 <style scoped>
+
+  .el-card{
+    user-select: none;
+  }
  .el-button--mini{
    padding: 7px 12px ;
  }

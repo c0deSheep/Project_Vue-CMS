@@ -5,10 +5,11 @@ import VueRouter from 'vue-router'
 import Login from '../views/login/Login'
 import Home from '../views/home/Home'
 
-import Welcome from '../components/welcome/Welcome'
-import Users from '../components/user/User'
-import Rights from '../components/power/Rights'
-import Roles from '../components/power/Roles'
+import Welcome from '../components/content/welcome/Welcome'
+import Users from '../components/content/user/User'
+import Rights from '../components/content/power/Rights'
+import Roles from '../components/content/power/Roles'
+import Cate from '../components/content/goods/Cate'
 
 Vue.use(VueRouter)
 
@@ -42,6 +43,10 @@ const routes = [
       {
         path:'/roles',
         component:Roles
+      },
+      {
+        path:'/categories',
+        component:Cate
       }
     ]
   },

@@ -1,4 +1,4 @@
-<!--修改用户信息弹框-->
+<!--用户管理路由的修改用户信息弹框-->
 <template>
   <el-dialog
     title="修改用户"
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  import { put } from '../../../network/put'
+  import { put } from '../../../../network/put'
 
 
   export default {

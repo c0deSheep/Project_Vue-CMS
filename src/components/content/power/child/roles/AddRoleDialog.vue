@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import {post} from '../../../network/post'
+  import {post} from '../../../../../network/post'
 
   export default {
     name: "RoleDialog",

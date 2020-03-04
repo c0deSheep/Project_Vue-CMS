@@ -16,9 +16,9 @@
 </template>
 
 <script>
-  import {get} from '../../network/get.js'
+  import {get} from '../../../network/get.js'
 
-  import Breadcrumb from '../breadcrumb/Breadcrumb'
+  import Breadcrumb from '../../common/breadcrumb/Breadcrumb'
   import Card from './child/Card'
 
   export default {

@@ -12,10 +12,10 @@
     <!--添加角色区域-->
     <el-table :data="rolesList" border stripe>
       <!--展开列-->
-      <el-table-column type="expand">
+      <el-table-column  type="expand">
         <!--列内容-->
-        <template slot-scope="scope">
-          <el-row v-for="(item1,i1) in scope.row.children" :key="item1.id" :class="['bdbottom', i1===0? 'bdtop':'','vcenter']">
+        <template slot-scope="scope ">
+          <el-row  v-for="(item1,i1) in scope.row.children" :key="item1.id" :class="['bdbottom', i1===0? 'bdtop':'','vcenter']">
             <!--第一列渲染一级权限 span为一行占据得位置，总数为24，所以，一级占5，二级三级占19(19里二级又占6份，三级占18份)-->
             <el-col :span="5">
               <el-tag closable @close="removeRightById(scope.row,item1.id)">{{item1.authName}}</el-tag>
@@ -40,7 +40,7 @@
         </template>
       </el-table-column>
       <!--索引列-->
-      <el-table-column type="index"></el-table-column>
+      <el-table-column label="#" type="index"></el-table-column>
       <el-table-column label="角色名称" prop="roleName"></el-table-column>
       <el-table-column label="角色描述" prop="roleDesc"></el-table-column>
       <el-table-column label="操作">
@@ -74,8 +74,8 @@
 </template>
 
 <script>
-  import { get } from '../../../network/get'
-  import {remove} from "../../../network/remove";
+  import { get } from '../../../../../network/get'
+  import {remove} from "../../../../../network/remove";
 
   import AddRoleDialog from './AddRoleDialog'
   import EditRoleDialog from './EditRoleDialog'

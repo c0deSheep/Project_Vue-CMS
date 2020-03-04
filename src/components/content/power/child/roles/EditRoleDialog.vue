@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { put } from '../../../network/put'
+  import { put } from '../../../../../network/put'
 
   export default {
     name: "EditRoleDialog",

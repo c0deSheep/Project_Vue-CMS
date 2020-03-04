@@ -1,3 +1,4 @@
+<!--用户管理路由的分配角色弹框组件-->
 <template>
   <el-dialog
     title="分配角色"
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-  import { put } from '../../../network/put'
+  import { put } from '../../../../network/put'
 
   export default {
     name: "RoleDialog",

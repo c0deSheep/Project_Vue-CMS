@@ -77,7 +77,7 @@
 <script>
   import {get} from '../../network/get.js'
 
-  import CurrentTime from '../../components/time/CurrentTime'
+  import CurrentTime from '../../components/common/time/CurrentTime'
 
   export default {
     name: "Home",

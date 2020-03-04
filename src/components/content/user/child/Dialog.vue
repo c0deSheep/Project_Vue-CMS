@@ -1,4 +1,4 @@
-<!--弹出添加用户对话框-->
+<!--用户管理路由的弹出添加用户对话框组件-->
 <template>
   <el-dialog
     title="添加用户"
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-  import { post } from '../../../network/post'
+  import { post } from '../../../../network/post'
 
   export default {
     name: "Dialog",

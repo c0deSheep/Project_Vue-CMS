@@ -28,8 +28,8 @@
 </template>
 
 <script>
-  import { get } from '../../../network/get'
-  import { post } from '../../../network/post'
+  import { get } from '../../../../../network/get'
+  import { post } from '../../../../../network/post'
 
   export default {
     name: "SetRightDialog",

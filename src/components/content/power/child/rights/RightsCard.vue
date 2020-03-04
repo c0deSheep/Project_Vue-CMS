@@ -18,7 +18,7 @@
 </template>np
 
 <script>
-  import {get} from '../../../network/get'
+  import {get} from '../../../../../network/get'
 
   export default {
     name: "test",
