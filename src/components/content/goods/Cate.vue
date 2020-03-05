@@ -176,7 +176,7 @@
         },
         // 添加分类表单规则
         addCateFormRules:{
-          cat_name:[{required:true,message:'请输入分类名称',trigger:'blur'},{}],
+          cat_name:[{required:true,message:'请输入分类名称',trigger:'blur'}],
         },
         // 一层二层父级商品分类数据
         parentCateList : [],

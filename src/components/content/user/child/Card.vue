@@ -41,11 +41,11 @@
           </el-tooltip>
           <!--删除-->
           <el-tooltip class="item" effect="dark" content="删除" placement="top" :enterable="false">
-            <el-button type="danger" icon="el-icon-delete" size="mini" title="删除" @click="removeUserById(slotProps.row.id)"></el-button>
+            <el-button type="danger" icon="el-icon-delete" size="mini"  @click="removeUserById(slotProps.row.id)"></el-button>
           </el-tooltip>
           <!--分配角色-->
           <el-tooltip class="item" effect="dark" content="分配角色" placement="top" :enterable="false">
-            <el-button type="warning" icon="el-icon-setting" size="mini" title="分配角色" @click="showSetRoleDialog(slotProps.row)"></el-button>
+            <el-button type="warning" icon="el-icon-setting" size="mini"  @click="showSetRoleDialog(slotProps.row)"></el-button>
           </el-tooltip>
         </template>
       </el-table-column>
