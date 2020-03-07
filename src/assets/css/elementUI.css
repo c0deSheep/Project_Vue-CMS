@@ -9,6 +9,7 @@
 
 .el-card {
   box-shadow: 2px 2px 5px 1px rgba(0,0,0,.1) !important;
+  min-height: 600px;
 }
 
 .el-table {
@@ -34,4 +35,18 @@ td  {
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
   margin-bottom: 20px !important;
+}
+
+
+.el-steps {
+  margin: 20px 0 !important;
+}
+
+.el-step__title {
+  font-size: 13px;
+}
+
+/*富文本编辑器*/
+.ql-editor {
+  min-height: 300px;
 }

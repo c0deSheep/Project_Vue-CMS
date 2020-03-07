@@ -9,6 +9,7 @@
         </div>
         <!--当前时间组件-->
         <current-time class="current-time"></current-time>
+        <!--el-tooltip为鼠标悬停提示语-->
         <el-tooltip class="item" effect="dark" content="退出" placement="bottom" :enterable="false">
           <el-button type="danger"  @click="logout">
           <i class="iconfont icon-tuichu"></i>
@@ -35,7 +36,7 @@
             :collapse-transition="false"
             router
             :default-active="activePath"><!--unique-opened	是否只保持一个子菜单的展开 ; collapse是决定是否折叠展开; router也是el-menu中拥有的属性，可以自动为下面的子菜单(el-menu-item)添加路由，路由路径为index绑定的值，需要在值前加 / 表示路由
-                                default-active 表示默认激活状态，值为index 联动session storage可以将刷新页面的路径放入此，实现记录激活-->
+                                collapse-transition为折叠动画 default-active 表示默认激活状态，值为index 联动session storage可以将刷新页面的路径放入此，实现记录激活-->
             <!--这是一级菜单-->
             <!--将menuList中保存的左侧一级菜单数据遍历-->
             <!--index是el-submenu自带属性，用于控制点击和打开二级菜单，只接收字符串,解决方法就是将id拼接''-->

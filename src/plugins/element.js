@@ -31,7 +31,12 @@ import { Button,
                                                               Cascader,
                                                                 Alert,
                                                                   Tabs,
-                                                                    TabPane} from 'element-ui'
+                                                                    TabPane,
+                                                                      Steps,
+                                                                        Step,
+                                                                          Checkbox,
+                                                                            CheckboxGroup,
+                                                                              Upload} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import lang from 'element-ui/lib/locale/lang/zh-CN.js'
 import locale from 'element-ui/lib/locale'
@@ -68,6 +73,11 @@ Vue.use(Cascader)
 Vue.use(Alert)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Step)
+Vue.use(Steps)
+Vue.use(Checkbox)
+Vue.use(CheckboxGroup)
+Vue.use(Upload)
 // 不同的是，这个自定义弹框需要全局设置,$message是自定义属性
 Vue.prototype.$message = Message
 // 同样MessageBox也不需要全局使用，而是全局挂载
