@@ -1,5 +1,5 @@
 <template>
-  <div ref="divs">
+  <div>
     <!--面包屑导航区域-->
     <breadcrumb>
       <span slot="subName">订单管理</span>
@@ -97,9 +97,6 @@
 
 <script>
   import { get } from  '../../../network/get'
-  import { post } from  '../../../network/post'
-  import { put } from  '../../../network/put'
-  import { remove } from '../../../network/remove'
 
   import {formatDate} from "../../../common/utils";
   import citydata from "../../../common/citydata";
